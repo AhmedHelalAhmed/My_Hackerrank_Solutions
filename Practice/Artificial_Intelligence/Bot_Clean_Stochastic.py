@@ -9,18 +9,20 @@ def nxmv(posx, posy, board):
     bot_node = Node(posy, posx)
     near = None
     for i in range(len(board)):
-        for i in range(len(board)):
+        for j in range(len(board)):
             if board[i][j] == 'd':
                 dirty = Node(j, i)
                 d = dirty.dist(bot_node)
+                print(d)
                 if d == 0:
                     print('CLEAN')
                     return
                 if near is None or d < near.dist(bot_node):
                     near = dirty
-    output = None
+    out = None
     if near is not None:
         deltax = near.x - bot_node.x
+        print(deltax)
         if deltax < 0:
             out = 'LEFT'
         elif deltax > 0:
@@ -28,7 +30,8 @@ def nxmv(posx, posy, board):
         if out is not None:
             print(out)
             return
-        deltay = near.y = bot_node.y
+        deltay = near.y - bot_node.y
+        print(deltay)
         if deltay < 0:
             out = 'UP'
         elif deltay > 0:
